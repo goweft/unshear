@@ -221,6 +221,8 @@ The fork removed content filters, gutted permission checks, deleted attestation 
 
 - **[ratine](https://github.com/goweft/ratine)** — Agent memory poisoning detector
 
+- **[crocking](https://github.com/goweft/crocking)** — AI authorship detector for git repositories
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
