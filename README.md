@@ -33,43 +33,7 @@ unshear compare ./upstream ./fork --min-score 70
 
 ## See It Work
 
-Someone forks an AI agent and strips the safety mechanisms:
-
-```
-$ unshear compare ./upstream ./fork
-
-═══ unshear divergence report ═══
-  Upstream: ./upstream
-  Fork:     ./fork
-  Files upstream: 3
-  Files in fork:  3
-  Removed: 0  Added: 0  Modified: 3
-
-  Security Score: 65/100 — MODERATE RISK
-
-  ┌─ CRITICAL (2)
-  │ ✖ [FORK-003] src/auth.py
-  │   Major security logic removed (13 signals removed, 0 added)
-  │   11 security keyword hits. Rate limiting logic (2x)
-  │   -15 / +1 lines
-  │ ✖ [FORK-003] src/main.py
-  │   Major security logic removed (12 signals removed, 0 added)
-  │   8 security keyword hits. Attribution/provenance marker (4x)
-  │   -10 / +1 lines
-  └─────────────────────────────────────────────────────────
-
-  ┌─ HIGH (2)
-  │ ✖ [FORK-004] src/guardrails.py
-  │   Security logic weakened (9 signals removed, 5 added)
-  │   7 security keyword hits. Safety mode flag (2x)
-  │   -14 / +5 lines
-  │ ✖ [FORK-005] src/guardrails.py
-  │   Weakening pattern introduced: Safety/security flag set to false
-  │   -14 / +5 lines
-  └─────────────────────────────────────────────────────────
-```
-
-The fork gutted the auth module (all checks return `True`), emptied the blocklist patterns, set `SAFETY_MODE = False`, and stripped the AI attribution markers. Unshear caught all of it.
+<p align="center"><img src="demo.svg" alt="unshear demo" width="100%"></p>
 
 ## What It Detects
 
