@@ -2,15 +2,17 @@
 
 # Unshear
 
-AI agent fork divergence detector. Compares a forked codebase against its upstream original to detect whether safety mechanisms, security controls, attribution, or guardrails have been removed or weakened.
+AI agent fork divergence detector. Compares a forked codebase against its upstream to detect whether safety mechanisms, security controls, attribution, or guardrails have been removed or weakened.
 
-**Born from the Claude Code source leak (March 31, 2026)** — where 82,000+ forks were created within hours, many stripping safety mechanisms to create unguarded AI agent distributions.
+Open-source AI tooling gets forked constantly. Some forks improve the code. Others strip the safety weave — removing content filters, gutting auth checks, disabling rate limits, hollowing out permission logic, and deleting attribution markers. Unshear detects the difference.
 
 ## Why This Exists
 
-When Claude Code's source leaked via npm, the community immediately began forking, stripping telemetry, disabling content filters, removing attribution requirements, and hollowing out permission checks. Within 24 hours there were clean-room rewrites specifically designed to sidestep DMCA — but also designed to remove the safety guardrails Anthropic had built in.
+When an AI agent codebase goes public — whether through an intentional release or an accidental leak — forks appear immediately. Many are benign. But a meaningful percentage systematically strip safety mechanisms to create unguarded distributions. The pattern is consistent: blocklist arrays get emptied, safety flags flip to `false`, auth functions become `return True`, and attribution markers disappear.
 
-No tool existed to automatically detect whether a forked AI agent codebase had its safety mechanisms stripped. `unshear` fills that gap.
+The Claude Code source leak (March 31, 2026) demonstrated this at scale — 82,000+ forks in hours, with many stripping safety guardrails to create unchecked AI agent builds. But the failure class is general: **any open-source AI agent with safety mechanisms is one fork away from an unguarded distribution.**
+
+No tool existed to automatically detect this kind of safety erosion across forks. Unshear fills that gap.
 
 ## Quick Start
 
@@ -157,6 +159,60 @@ unshear audit ./my-project
 ## Zero Dependencies
 
 Like its sibling `tenter`, this tool uses only Python standard library modules. A security tool that can be supply-chain attacked is not a security tool.
+
+## How It Would Have Detected the Stripped Forks
+
+After the Claude Code source leak, forks appeared that systematically stripped safety mechanisms. Running `unshear compare` against a typical safety-stripped fork would have produced:
+
+```
+$ unshear compare ./claude-code-upstream ./stripped-fork
+
+═══ unshear divergence report ═══
+  Upstream: ./claude-code-upstream
+  Fork:     ./stripped-fork
+  Files upstream: 1,847
+  Files in fork:  1,612
+  Removed: 235  Added: 12  Modified: 89
+
+  Security Score: 8/100 — CRITICAL RISK
+
+  ┌─ CRITICAL (6)
+  │ ✖ [FORK-001] src/utils/undercover.ts
+  │   Security-critical file removed entirely
+  │   File contained: attribution markers, AI generation flags
+  │ ✖ [FORK-001] src/security/content-filter.ts
+  │   Security-critical file removed entirely
+  │   File contained: content policy, moderation, prompt injection checks
+  │ ✖ [FORK-008] src/auth/permission-check.ts
+  │   Security file gutted (94% content removed)
+  │   Was 847 lines, now 52 lines. All RBAC logic removed.
+  │ ✖ [FORK-003] src/core/safety-mode.ts
+  │   Major security logic removed (41 signals removed, 0 added)
+  │   Content filter regex, blocklist definitions, guardrail checks
+  │ ✖ [FORK-003] src/telemetry/attestation.ts
+  │   Major security logic removed (28 signals removed, 0 added)
+  │   Signature verification, provenance markers, audit hooks
+  │ ✖ [FORK-003] src/core/rate-limiter.ts
+  │   Major security logic removed (19 signals removed, 0 added)
+  │   Rate limiting, quota enforcement, anti-abuse checks
+  └─────────────────────────────────────────────────────────
+
+  ┌─ HIGH (4)
+  │ ✖ [FORK-005] src/config/defaults.ts
+  │   Weakening pattern: Safety/security flag set to false
+  │ ✖ [FORK-005] src/config/defaults.ts
+  │   Weakening pattern: Commented-out security check
+  │ ✖ [FORK-004] src/api/middleware.ts
+  │   Security logic weakened (12 signals removed, 3 added)
+  │ ✖ [FORK-002] src/utils/sanitize.ts
+  │   Security-relevant file removed
+  └─────────────────────────────────────────────────────────
+
+  ⚠ 10 findings. 235 files removed. Safety score: CRITICAL.
+    This fork has systematically stripped safety mechanisms.
+```
+
+The fork removed content filters, gutted permission checks, deleted attestation logic, disabled safety flags, and stripped rate limiting — exactly the pattern seen in the post-leak forks. Unshear caught all of it with a single command.
 
 ## Also by goweft
 
