@@ -1,0 +1,39 @@
+<svg width="1280" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="680" height="280" rx="12" fill="#f8f7f4"/>
+<g transform="translate(60, 50)">
+  <g opacity="0.7">
+    <line x1="20" y1="0" x2="20" y2="180" stroke="#1D9E75" stroke-width="1.5"/>
+    <line x1="40" y1="0" x2="40" y2="180" stroke="#1D9E75" stroke-width="1.5"/>
+    <line x1="60" y1="0" x2="60" y2="180" stroke="#1D9E75" stroke-width="1.5"/>
+    <line x1="0" y1="30" x2="80" y2="30" stroke="#1D9E75" stroke-width="1.5"/>
+    <line x1="0" y1="60" x2="80" y2="60" stroke="#1D9E75" stroke-width="1.5"/>
+    <line x1="0" y1="90" x2="80" y2="90" stroke="#1D9E75" stroke-width="1.5"/>
+    <line x1="0" y1="120" x2="80" y2="120" stroke="#1D9E75" stroke-width="1.5"/>
+    <line x1="0" y1="150" x2="80" y2="150" stroke="#1D9E75" stroke-width="1.5"/>
+  </g>
+  <line x1="85" y1="10" x2="105" y2="170" stroke="#E24B4A" stroke-width="2.5" opacity="0.8" stroke-dasharray="4 3"/>
+  <g opacity="0.4">
+    <line x1="110" y1="0" x2="110" y2="45" stroke="#E24B4A" stroke-width="1.5"/>
+    <line x1="110" y1="55" x2="113" y2="80" stroke="#888780" stroke-width="1" stroke-dasharray="2 2"/>
+    <line x1="130" y1="0" x2="130" y2="70" stroke="#E24B4A" stroke-width="1.5"/>
+    <line x1="130" y1="85" x2="134" y2="120" stroke="#888780" stroke-width="1" stroke-dasharray="2 2"/>
+    <line x1="150" y1="0" x2="150" y2="95" stroke="#E24B4A" stroke-width="1.5"/>
+    <line x1="150" y1="110" x2="155" y2="150" stroke="#888780" stroke-width="1" stroke-dasharray="2 2"/>
+    <line x1="105" y1="30" x2="140" y2="32" stroke="#888780" stroke-width="1" stroke-dasharray="2 2"/>
+    <line x1="105" y1="60" x2="155" y2="63" stroke="#888780" stroke-width="1" stroke-dasharray="2 2"/>
+    <line x1="105" y1="90" x2="160" y2="93" stroke="#888780" stroke-width="1" stroke-dasharray="2 2"/>
+    <line x1="105" y1="120" x2="148" y2="122" stroke="#888780" stroke-width="1" stroke-dasharray="2 2"/>
+    <line x1="105" y1="150" x2="165" y2="153" stroke="#888780" stroke-width="1" stroke-dasharray="2 2"/>
+  </g>
+  <circle cx="105" cy="90" r="28" fill="none" stroke="#BA7517" stroke-width="2" opacity="0.7"/>
+  <line x1="125" y1="112" x2="140" y2="127" stroke="#BA7517" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <circle cx="95" cy="90" r="5" fill="#E24B4A" opacity="0.9"/>
+  <text x="95" y="93" font-family="system-ui, sans-serif" font-size="8" font-weight="500" fill="#fff" text-anchor="middle">!</text>
+</g>
+<text x="280" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="500" fill="#2c2c2a" letter-spacing="-1">unshear</text>
+<text x="280" y="145" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="400" fill="#5f5e5a">AI agent fork divergence detector</text>
+<text x="280" y="185" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="400" fill="#888780">reveals where someone cut the safety weave</text>
+<text x="280" y="202" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="400" fill="#888780">detects stripped guardrails, removed auth, disabled flags</text>
+<rect x="280" y="222" width="56" height="22" rx="4" fill="#f1efe8" stroke="#d3d1c7" stroke-width="0.5"/>
+<text x="308" y="237" font-family="monospace" font-size="10" font-weight="400" fill="#888780" text-anchor="middle">goweft</text>
+</svg>

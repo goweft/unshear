@@ -1,3 +1,5 @@
+<p align="center"><img src="banner.svg" alt="unshear" width="100%"></p>
+
 # Unshear
 
 AI agent fork divergence detector. Compares a forked codebase against its upstream original to detect whether safety mechanisms, security controls, attribution, or guardrails have been removed or weakened.
