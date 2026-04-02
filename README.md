@@ -219,6 +219,8 @@ The fork removed content filters, gutted permission checks, deleted attestation 
 - **[tenter](https://github.com/goweft/tenter)** — Pre-publish artifact integrity scanner
 - **[heddle](https://github.com/goweft/heddle)** — Policy-and-trust layer for MCP tool servers
 
+- **[ratine](https://github.com/goweft/ratine)** — Agent memory poisoning detector
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
