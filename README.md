@@ -194,13 +194,10 @@ unshear audit ./my-project
 
 Like its sibling `tenter`, this tool uses only Python standard library modules. A security tool that can be supply-chain attacked is not a security tool.
 
-## Part of the WEFT Ecosystem
-
-Built by [goweft](https://github.com/goweft) as part of the WEFT security tooling ecosystem:
+## Also by goweft
 
 - **[tenter](https://github.com/goweft/tenter)** — Pre-publish artifact integrity scanner
-- **unshear** — Fork divergence detector (this tool)
-- **Heddle** — Self-hosted MCP mesh runtime with OWASP Agentic Top 10 security architecture
+- **[heddle](https://github.com/goweft/heddle)** — Policy-and-trust layer for MCP tool servers
 
 ## License
 
