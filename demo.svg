@@ -1,42 +1,100 @@
-<svg width="680" height="460" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
-<style>
-  @keyframes appear { from { opacity: 0 } to { opacity: 1 } }
-  .term-bg { fill: #1a1b26; }
-  .term-bar { fill: #24283b; }
-  .term-text { font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace; font-size: 12px; fill: #a9b1d6; }
-  .term-green { fill: #9ece6a; }
-  .term-red { fill: #f7768e; }
-  .term-yellow { fill: #e0af68; }
-  .term-gray { fill: #565f89; }
-  .term-white { fill: #c0caf5; }
-  .term-bold { font-weight: 600; }
-  .line { opacity: 0; animation: appear 0.15s ease-out forwards; }
-</style>
-<rect class="term-bg" width="680" height="460" rx="8"/>
-<rect class="term-bar" width="680" height="32" rx="8"/>
-<rect class="term-bg" x="0" y="24" width="680" height="8"/>
-<circle cx="16" cy="16" r="5.5" fill="#f7768e"/>
-<circle cx="34" cy="16" r="5.5" fill="#e0af68"/>
-<circle cx="52" cy="16" r="5.5" fill="#9ece6a"/>
-<text class="term-text term-gray" x="340" y="20" text-anchor="middle" font-size="11">unshear — fork divergence scan</text>
-<text class="term-text line" y="58" x="16" style="animation-delay:0.3s"><tspan class="term-green">$</tspan><tspan class="term-white"> unshear compare ./upstream ./fork</tspan></text>
-<text class="term-text term-white term-bold line" y="86" x="16" style="animation-delay:1.0s">═══ unshear divergence report ═══</text>
-<text class="term-text term-gray line" y="106" x="24" style="animation-delay:1.3s">Upstream: ./upstream    Fork: ./fork</text>
-<text class="term-text term-gray line" y="122" x="24" style="animation-delay:1.5s">Removed: 0  Added: 0  Modified: 3</text>
-<text class="term-text term-yellow term-bold line" y="148" x="24" style="animation-delay:2.0s">Security Score: 65/100 — MODERATE RISK</text>
-<text class="term-text term-red term-bold line" y="176" x="24" style="animation-delay:2.4s">┌─ CRITICAL (2)</text>
-<text class="term-text term-red line" y="194" x="24" style="animation-delay:2.6s">│ ✖ [FORK-003] src/auth.py</text>
-<text class="term-text term-gray line" y="210" x="24" style="animation-delay:2.7s">│   Major security logic removed (13 signals removed)</text>
-<text class="term-text term-gray line" y="226" x="24" style="animation-delay:2.8s">│   11 keyword hits. Rate limiting logic (2x)</text>
-<text class="term-text term-red line" y="246" x="24" style="animation-delay:3.0s">│ ✖ [FORK-003] src/main.py</text>
-<text class="term-text term-gray line" y="262" x="24" style="animation-delay:3.1s">│   Major security logic removed (12 signals removed)</text>
-<text class="term-text term-gray line" y="278" x="24" style="animation-delay:3.2s">│   8 keyword hits. Attribution/provenance marker (4x)</text>
-<text class="term-text term-red line" y="296" x="24" style="animation-delay:3.4s">└─────────────────────────────────────────</text>
-<text class="term-text term-yellow term-bold line" y="320" x="24" style="animation-delay:3.7s">┌─ HIGH (2)</text>
-<text class="term-text term-yellow line" y="338" x="24" style="animation-delay:3.9s">│ ✖ [FORK-004] src/guardrails.py</text>
-<text class="term-text term-gray line" y="354" x="24" style="animation-delay:4.0s">│   Security logic weakened (9 signals removed, 5 added)</text>
-<text class="term-text term-yellow line" y="372" x="24" style="animation-delay:4.2s">│ ✖ [FORK-005] src/guardrails.py</text>
-<text class="term-text term-gray line" y="388" x="24" style="animation-delay:4.3s">│   Weakening pattern: Safety flag set to false</text>
-<text class="term-text term-yellow line" y="406" x="24" style="animation-delay:4.5s">└─────────────────────────────────────────</text>
-<text class="term-text term-red term-bold line" y="440" x="24" style="animation-delay:5.0s">⚠ 4 findings across 3 files. Auth gutted. Safety disabled.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 908" width="660" height="908">
+<title>unshear demo</title>
+<style>svg{font-family:ui-monospace,SFMono-Regular,'SF Mono',Consolas,'Liberation Mono',Menlo,monospace;}
+@keyframes la0{0%{opacity:1;}}.la0{animation:la0 12.0s linear infinite;}
+@keyframes la1{0%,1.389%{opacity:0;}1.539%,100%{opacity:1;}}.la1{animation:la1 12.0s linear infinite;}
+@keyframes la2{0%,2.778%{opacity:0;}2.928%,100%{opacity:1;}}.la2{animation:la2 12.0s linear infinite;}
+@keyframes la3{0%,4.167%{opacity:0;}4.317%,100%{opacity:1;}}.la3{animation:la3 12.0s linear infinite;}
+@keyframes la4{0%,5.556%{opacity:0;}5.706%,100%{opacity:1;}}.la4{animation:la4 12.0s linear infinite;}
+@keyframes la5{0%,6.944%{opacity:0;}7.094%,100%{opacity:1;}}.la5{animation:la5 12.0s linear infinite;}
+@keyframes la6{0%,8.333%{opacity:0;}8.483%,100%{opacity:1;}}.la6{animation:la6 12.0s linear infinite;}
+@keyframes la7{0%,9.722%{opacity:0;}9.872%,100%{opacity:1;}}.la7{animation:la7 12.0s linear infinite;}
+@keyframes la8{0%,11.111%{opacity:0;}11.261%,100%{opacity:1;}}.la8{animation:la8 12.0s linear infinite;}
+@keyframes la9{0%,12.5%{opacity:0;}12.65%,100%{opacity:1;}}.la9{animation:la9 12.0s linear infinite;}
+@keyframes la10{0%,13.889%{opacity:0;}14.039%,100%{opacity:1;}}.la10{animation:la10 12.0s linear infinite;}
+@keyframes la11{0%,15.278%{opacity:0;}15.428%,100%{opacity:1;}}.la11{animation:la11 12.0s linear infinite;}
+@keyframes la12{0%,16.667%{opacity:0;}16.817%,100%{opacity:1;}}.la12{animation:la12 12.0s linear infinite;}
+@keyframes la13{0%,18.056%{opacity:0;}18.206%,100%{opacity:1;}}.la13{animation:la13 12.0s linear infinite;}
+@keyframes la14{0%,19.444%{opacity:0;}19.594%,100%{opacity:1;}}.la14{animation:la14 12.0s linear infinite;}
+@keyframes la15{0%,20.833%{opacity:0;}20.983%,100%{opacity:1;}}.la15{animation:la15 12.0s linear infinite;}
+@keyframes la16{0%,22.222%{opacity:0;}22.372%,100%{opacity:1;}}.la16{animation:la16 12.0s linear infinite;}
+@keyframes la17{0%,23.611%{opacity:0;}23.761%,100%{opacity:1;}}.la17{animation:la17 12.0s linear infinite;}
+@keyframes la18{0%,25.0%{opacity:0;}25.15%,100%{opacity:1;}}.la18{animation:la18 12.0s linear infinite;}
+@keyframes la19{0%,26.389%{opacity:0;}26.539%,100%{opacity:1;}}.la19{animation:la19 12.0s linear infinite;}
+@keyframes la20{0%,27.778%{opacity:0;}27.928%,100%{opacity:1;}}.la20{animation:la20 12.0s linear infinite;}
+@keyframes la21{0%,29.167%{opacity:0;}29.317%,100%{opacity:1;}}.la21{animation:la21 12.0s linear infinite;}
+@keyframes la22{0%,30.556%{opacity:0;}30.706%,100%{opacity:1;}}.la22{animation:la22 12.0s linear infinite;}
+@keyframes la23{0%,31.944%{opacity:0;}32.094%,100%{opacity:1;}}.la23{animation:la23 12.0s linear infinite;}
+@keyframes la24{0%,33.333%{opacity:0;}33.483%,100%{opacity:1;}}.la24{animation:la24 12.0s linear infinite;}
+@keyframes la25{0%,34.722%{opacity:0;}34.872%,100%{opacity:1;}}.la25{animation:la25 12.0s linear infinite;}
+@keyframes la26{0%,36.111%{opacity:0;}36.261%,100%{opacity:1;}}.la26{animation:la26 12.0s linear infinite;}
+@keyframes la27{0%,37.5%{opacity:0;}37.65%,100%{opacity:1;}}.la27{animation:la27 12.0s linear infinite;}
+@keyframes la28{0%,38.889%{opacity:0;}39.039%,100%{opacity:1;}}.la28{animation:la28 12.0s linear infinite;}
+@keyframes la29{0%,40.278%{opacity:0;}40.428%,100%{opacity:1;}}.la29{animation:la29 12.0s linear infinite;}
+@keyframes la30{0%,41.667%{opacity:0;}41.817%,100%{opacity:1;}}.la30{animation:la30 12.0s linear infinite;}
+@keyframes la31{0%,43.056%{opacity:0;}43.206%,100%{opacity:1;}}.la31{animation:la31 12.0s linear infinite;}
+@keyframes la32{0%,44.444%{opacity:0;}44.594%,100%{opacity:1;}}.la32{animation:la32 12.0s linear infinite;}
+@keyframes la33{0%,45.833%{opacity:0;}45.983%,100%{opacity:1;}}.la33{animation:la33 12.0s linear infinite;}
+@keyframes la34{0%,47.222%{opacity:0;}47.372%,100%{opacity:1;}}.la34{animation:la34 12.0s linear infinite;}
+@keyframes la35{0%,48.611%{opacity:0;}48.761%,100%{opacity:1;}}.la35{animation:la35 12.0s linear infinite;}
+@keyframes la36{0%,50.0%{opacity:0;}50.15%,100%{opacity:1;}}.la36{animation:la36 12.0s linear infinite;}
+@keyframes la37{0%,51.389%{opacity:0;}51.539%,100%{opacity:1;}}.la37{animation:la37 12.0s linear infinite;}
+@keyframes la38{0%,52.778%{opacity:0;}52.928%,100%{opacity:1;}}.la38{animation:la38 12.0s linear infinite;}
+@keyframes la39{0%,54.167%{opacity:0;}54.317%,100%{opacity:1;}}.la39{animation:la39 12.0s linear infinite;}
+@keyframes la40{0%,55.556%{opacity:0;}55.706%,100%{opacity:1;}}.la40{animation:la40 12.0s linear infinite;}
+@keyframes la41{0%,56.944%{opacity:0;}57.094%,100%{opacity:1;}}.la41{animation:la41 12.0s linear infinite;}
+@keyframes la42{0%,58.333%{opacity:0;}58.483%,100%{opacity:1;}}.la42{animation:la42 12.0s linear infinite;}
+@keyframes la43{0%,59.722%{opacity:0;}59.872%,100%{opacity:1;}}.la43{animation:la43 12.0s linear infinite;}
+@keyframes la44{0%,61.111%{opacity:0;}61.261%,100%{opacity:1;}}.la44{animation:la44 12.0s linear infinite;}
+@keyframes la45{0%,62.5%{opacity:0;}62.65%,100%{opacity:1;}}.la45{animation:la45 12.0s linear infinite;}
+@keyframes cur{0%,62.450%{opacity:0;} 62.500%,66.667%{opacity:1;} 66.667%,70.833%{opacity:0;} 70.833%,75.000%{opacity:1;} 75.000%,79.167%{opacity:0;} 79.167%,83.333%{opacity:1;} 83.333%,87.500%{opacity:0;} 87.500%,91.667%{opacity:1;} 91.667%,95.833%{opacity:0;} 95.833%,100.000%{opacity:1;}}.cur{animation:cur 12.0s linear infinite;}</style>
+<rect width="660" height="908" rx="6" ry="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect width="660" height="34" rx="6" ry="6" fill="#161b22"/>
+<rect y="28" width="660" height="6" fill="#161b22"/>
+<line x1="0" y1="34" x2="660" y2="34" stroke="#30363d" stroke-width="1"/>
+<circle cx="16" cy="17" r="5.5" fill="#ff5f57"/>
+<circle cx="32" cy="17" r="5.5" fill="#febc2e"/>
+<circle cx="48" cy="17" r="5.5" fill="#28c840"/>
+<text x="330" y="22" text-anchor="middle" font-size="13" fill="#6e7681">unshear — fork divergence detector</text>
+<text x="14" y="63" font-size="13" class="la0"><tspan fill="#58a6ff">$ </tspan><tspan fill="#c9d1d9">unshear compare ./claude-agent-upstream ./suspicious-fork-7f4a3</tspan></text>
+<text x="14" y="99" font-size="13" class="la2"><tspan fill="#e6edf3" font-weight="bold">═══ unshear divergence report ═══</tspan></text>
+<text x="14" y="117" font-size="13" class="la3"><tspan fill="#c9d1d9">  Upstream: ./claude-agent-upstream</tspan></text>
+<text x="14" y="135" font-size="13" class="la4"><tspan fill="#c9d1d9">  Fork:     ./suspicious-fork-7f4a3</tspan></text>
+<text x="14" y="153" font-size="13" class="la5"><tspan fill="#c9d1d9">  Files upstream: 312</tspan></text>
+<text x="14" y="171" font-size="13" class="la6"><tspan fill="#c9d1d9">  Files in fork:  274</tspan></text>
+<text x="14" y="189" font-size="13" class="la7"><tspan fill="#c9d1d9">  Removed: 9  Added: 3  Modified: 21</tspan></text>
+<text x="14" y="225" font-size="13" class="la9"><tspan fill="#f78166">  Security Score: 38/100 — HIGH RISK</tspan></text>
+<text x="14" y="261" font-size="13" class="la11"><tspan fill="#f78166">  ┌─ CRITICAL (3)</tspan></text>
+<text x="14" y="279" font-size="13" class="la12"><tspan fill="#f78166">  │ ✖ [FORK-001] src/security/content-filter.ts</tspan></text>
+<text x="14" y="297" font-size="13" class="la13"><tspan fill="#c9d1d9">  │   Security-critical file removed from fork</tspan></text>
+<text x="14" y="315" font-size="13" class="la14"><tspan fill="#6e7681">  │   47 security keyword hits; Content policy (3x); Access control check (2x)</tspan></text>
+<text x="14" y="333" font-size="13" class="la15"><tspan fill="#f78166">  │ ✖ [FORK-003] src/core/safety-mode.ts</tspan></text>
+<text x="14" y="351" font-size="13" class="la16"><tspan fill="#c9d1d9">  │   Major security logic removed (34 signals removed, 0 added)</tspan></text>
+<text x="14" y="369" font-size="13" class="la17"><tspan fill="#6e7681">  │   28 security keyword hits; Safety mode flag (6x); Access control check (2x)</tspan></text>
+<text x="14" y="387" font-size="13" class="la18"><tspan fill="#6e7681">  │   -142 / +8 lines</tspan></text>
+<text x="14" y="405" font-size="13" class="la19"><tspan fill="#f78166">  │ ✖ [FORK-008] src/auth/guardrail-check.ts</tspan></text>
+<text x="14" y="423" font-size="13" class="la20"><tspan fill="#c9d1d9">  │   Security file gutted: 98 lines removed, only 6 added</tspan></text>
+<text x="14" y="441" font-size="13" class="la21"><tspan fill="#6e7681">  │   -98 / +6 lines</tspan></text>
+<text x="14" y="459" font-size="13" class="la22"><tspan fill="#c9d1d9">  └────────────────────────────────────────────────────────────</tspan></text>
+<text x="14" y="495" font-size="13" class="la24"><tspan fill="#f78166">  ┌─ HIGH (4)</tspan></text>
+<text x="14" y="513" font-size="13" class="la25"><tspan fill="#f78166">  │ ✖ [FORK-005] src/config/defaults.ts</tspan></text>
+<text x="14" y="531" font-size="13" class="la26"><tspan fill="#c9d1d9">  │   Weakening pattern introduced: Safety/security flag set to false</tspan></text>
+<text x="14" y="549" font-size="13" class="la27"><tspan fill="#6e7681">  │   -12 / +12 lines</tspan></text>
+<text x="14" y="567" font-size="13" class="la28"><tspan fill="#f78166">  │ ✖ [FORK-005] src/config/agent.ts</tspan></text>
+<text x="14" y="585" font-size="13" class="la29"><tspan fill="#c9d1d9">  │   Weakening pattern introduced: Commented-out security check</tspan></text>
+<text x="14" y="603" font-size="13" class="la30"><tspan fill="#6e7681">  │   -8 / +3 lines</tspan></text>
+<text x="14" y="621" font-size="13" class="la31"><tspan fill="#f78166">  │ ✖ [FORK-004] src/api/middleware.ts</tspan></text>
+<text x="14" y="639" font-size="13" class="la32"><tspan fill="#c9d1d9">  │   Security logic weakened (9 signals removed, 2 added)</tspan></text>
+<text x="14" y="657" font-size="13" class="la33"><tspan fill="#6e7681">  │   6 security keyword hits; Rate limiting logic (2x)</tspan></text>
+<text x="14" y="675" font-size="13" class="la34"><tspan fill="#6e7681">  │   -31 / +14 lines</tspan></text>
+<text x="14" y="693" font-size="13" class="la35"><tspan fill="#f78166">  │ ✖ [FORK-002] src/utils/sanitize.ts</tspan></text>
+<text x="14" y="711" font-size="13" class="la36"><tspan fill="#c9d1d9">  │   Security-relevant file removed from fork</tspan></text>
+<text x="14" y="729" font-size="13" class="la37"><tspan fill="#6e7681">  │   Filename matches security pattern</tspan></text>
+<text x="14" y="747" font-size="13" class="la38"><tspan fill="#c9d1d9">  └────────────────────────────────────────────────────────────</tspan></text>
+<text x="14" y="783" font-size="13" class="la40"><tspan fill="#e3b341">  ┌─ MEDIUM (1)</tspan></text>
+<text x="14" y="801" font-size="13" class="la41"><tspan fill="#e3b341">  │ ⚠ [FORK-006] patches/override.py</tspan></text>
+<text x="14" y="819" font-size="13" class="la42"><tspan fill="#c9d1d9">  │   New file contains suspicious pattern: Exception handler swallowing errors</tspan></text>
+<text x="14" y="837" font-size="13" class="la43"><tspan fill="#6e7681">  │   Found 3 occurrence(s) in added file</tspan></text>
+<text x="14" y="855" font-size="13" class="la44"><tspan fill="#c9d1d9">  └────────────────────────────────────────────────────────────</tspan></text>
+<text x="14" y="891" font-size="13" class="cur"><tspan fill="#58a6ff">$ ▊</tspan></text>
 </svg>
