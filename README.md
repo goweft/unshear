@@ -16,10 +16,31 @@ No tool existed to automatically detect this kind of safety erosion across forks
 
 ## Quick Start
 
-```bash
-# Install
-pip install unshear
+**Static binary — no runtime required:**
 
+```bash
+# Linux (x86_64)
+curl -fsSL https://github.com/goweft/unshear/releases/latest/download/unshear-linux-x86_64 \
+  -o /usr/local/bin/unshear && chmod +x /usr/local/bin/unshear
+
+# macOS (Apple Silicon)
+curl -fsSL https://github.com/goweft/unshear/releases/latest/download/unshear-darwin-arm64 \
+  -o /usr/local/bin/unshear && chmod +x /usr/local/bin/unshear
+
+# Windows (PowerShell)
+Invoke-WebRequest -Uri https://github.com/goweft/unshear/releases/latest/download/unshear-windows-x86_64.exe `
+  -OutFile unshear.exe
+```
+
+**Or install the Python package:**
+
+```bash
+pip install unshear
+```
+
+**Run:**
+
+```bash
 # Compare a fork against upstream
 unshear compare ./upstream-repo ./suspicious-fork
 
@@ -36,6 +57,31 @@ unshear compare ./upstream ./fork --min-score 70
 ## See It Work
 
 <p align="center"><img src="demo.svg" alt="unshear demo" width="100%"></p>
+
+## Static Binary
+
+Unshear is available as a fully static binary with no runtime dependencies — no Python, no shared libraries, nothing to install beyond the binary itself. Drop it into any CI environment and run.
+
+| Platform | Download |
+|---|---|
+| Linux x86_64 (musl, fully static) | [unshear-linux-x86_64](https://github.com/goweft/unshear/releases/latest/download/unshear-linux-x86_64) |
+| macOS ARM64 | [unshear-darwin-arm64](https://github.com/goweft/unshear/releases/latest/download/unshear-darwin-arm64) |
+| Windows x86_64 | [unshear-windows-x86_64.exe](https://github.com/goweft/unshear/releases/latest/download/unshear-windows-x86_64.exe) |
+
+The static binary and the Python package produce identical output — same field names, same ANSI codes, same exit codes — so either can be swapped into existing integrations.
+
+**Build from source:**
+
+```bash
+git clone https://github.com/goweft/unshear
+cd unshear/rust
+cargo build --release
+# Binary at: target/release/unshear
+
+# Fully static musl build (Linux):
+rustup target add x86_64-unknown-linux-musl
+cargo build --release --target x86_64-unknown-linux-musl
+```
 
 ## What It Detects
 
@@ -108,6 +154,8 @@ Every comparison produces a security score from 0-100:
 
 ## CI Integration
 
+**Static binary (recommended — no Python setup required):**
+
 ```yaml
 name: Fork Safety Check
 on: [push]
@@ -125,10 +173,20 @@ jobs:
           repository: upstream-org/upstream-repo
           path: upstream
 
+      - name: Install unshear
+        run: |
+          curl -fsSL https://github.com/goweft/unshear/releases/latest/download/unshear-linux-x86_64 \
+            -o /usr/local/bin/unshear && chmod +x /usr/local/bin/unshear
+
+      - run: unshear compare ./upstream ./fork --min-score 70 --format json
+```
+
+**Python package:**
+
+```yaml
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - run: pip install unshear
       - run: unshear compare ./upstream ./fork --min-score 70 --format json
 ```
@@ -158,7 +216,11 @@ unshear audit ./my-project
 
 ## Zero Dependencies
 
-Like its sibling `tenter`, this tool uses only Python standard library modules. A security tool that can be supply-chain attacked is not a security tool.
+Both implementations are dependency-free at runtime:
+
+**Rust binary** — statically linked, no shared libraries, no runtime required. The Linux build targets `x86_64-unknown-linux-musl` so it runs on any Linux system regardless of glibc version.
+
+**Python package** — uses only stdlib modules (no PyPI dependencies). Same philosophy as sibling tool `tenter`. A security tool that can be supply-chain attacked is not a security tool.
 
 ## How It Would Have Detected the Stripped Forks
 
@@ -218,9 +280,7 @@ The fork removed content filters, gutted permission checks, deleted attestation 
 
 - **[tenter](https://github.com/goweft/tenter)** — Pre-publish artifact integrity scanner
 - **[heddle](https://github.com/goweft/heddle)** — Policy-and-trust layer for MCP tool servers
-
 - **[ratine](https://github.com/goweft/ratine)** — Agent memory poisoning detector
-
 - **[crocking](https://github.com/goweft/crocking)** — AI authorship detector for git repositories
 
 ## License
