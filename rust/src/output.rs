@@ -9,14 +9,14 @@
 // The box-drawing characters (┌ │ └ ─) and icons (✖ ⚠ ℹ) are identical
 // to the Python output — the demo.svg depends on this.
 
-use crate::report::{DivergenceReport, Severity, AuditReport};
+use crate::report::{AuditReport, DivergenceReport, Severity};
 
 const RESET: &str = "\x1b[0m";
 const BOLD: &str = "\x1b[1m";
 const DIM: &str = "\x1b[2m";
-const SCORE_LOW: &str = "\x1b[92m";    // green  — 80-100
-const SCORE_MOD: &str = "\x1b[93m";    // yellow — 50-79
-const SCORE_HIGH: &str = "\x1b[91m";   // red    — 20-49 and 0-19
+const SCORE_LOW: &str = "\x1b[92m"; // green  — 80-100
+const SCORE_MOD: &str = "\x1b[93m"; // yellow — 50-79
+const SCORE_HIGH: &str = "\x1b[91m"; // red    — 20-49 and 0-19
 
 fn col<'a>(code: &'a str, text: &'a str, use_color: bool) -> String {
     if use_color {
@@ -68,14 +68,22 @@ pub fn format_human(report: &DivergenceReport, use_color: bool) -> String {
     lines.push(String::new());
 
     if report.findings.is_empty() {
-        lines.push(col("\x1b[92m", "  \u{2713} No security-relevant divergence detected.", use_color));
+        lines.push(col(
+            "\x1b[92m",
+            "  \u{2713} No security-relevant divergence detected.",
+            use_color,
+        ));
         lines.push(String::new());
         return lines.join("\n");
     }
 
     // Group findings by severity, descending.
     for &sev in Severity::all_descending() {
-        let group: Vec<_> = report.findings.iter().filter(|f| f.severity == sev).collect();
+        let group: Vec<_> = report
+            .findings
+            .iter()
+            .filter(|f| f.severity == sev)
+            .collect();
         if group.is_empty() {
             continue;
         }
@@ -92,7 +100,10 @@ pub fn format_human(report: &DivergenceReport, use_color: bool) -> String {
             }
             if f.lines_removed > 0 || f.lines_added > 0 {
                 lines.push(dim(
-                    &format!("  \u{2502}   -{} / +{} lines", f.lines_removed, f.lines_added),
+                    &format!(
+                        "  \u{2502}   -{} / +{} lines",
+                        f.lines_removed, f.lines_added
+                    ),
                     use_color,
                 ));
             }

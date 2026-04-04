@@ -210,7 +210,10 @@ fn test_counts_keywords() {
 fn test_counts_code_patterns() {
     let content = b"const blocklist = [\"bad\", \"evil\"];\nif (permission) { allow(); }";
     let signals = count_security_signals(content);
-    assert!(!signals.code_patterns.is_empty(), "expected code pattern hits");
+    assert!(
+        !signals.code_patterns.is_empty(),
+        "expected code pattern hits"
+    );
 }
 
 #[test]
@@ -488,7 +491,11 @@ fn test_audit_finds_security_files() {
     let result = audit(tree.path().to_str().unwrap());
     assert!(result.total_security_signals > 0);
     assert!(!result.security_files.is_empty());
-    let paths: Vec<_> = result.security_files.iter().map(|f| f.path.as_str()).collect();
+    let paths: Vec<_> = result
+        .security_files
+        .iter()
+        .map(|f| f.path.as_str())
+        .collect();
     assert!(
         paths.iter().any(|p| p.contains("auth")),
         "expected auth.ts in top files, got {:?}",

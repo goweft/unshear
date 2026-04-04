@@ -173,8 +173,16 @@ fn analyze_diff(
 
     // FORK-005 — weakening patterns introduced in added code that weren't in removed code
     for wp in patterns::weakening_patterns() {
-        let in_added = !wp.regex.find_iter(&added_bytes).collect::<Vec<_>>().is_empty();
-        let in_removed = !wp.regex.find_iter(&removed_bytes).collect::<Vec<_>>().is_empty();
+        let in_added = !wp
+            .regex
+            .find_iter(&added_bytes)
+            .collect::<Vec<_>>()
+            .is_empty();
+        let in_removed = !wp
+            .regex
+            .find_iter(&removed_bytes)
+            .collect::<Vec<_>>()
+            .is_empty();
         if in_added && !in_removed {
             report.add_finding(
                 Finding::new(
@@ -215,10 +223,7 @@ fn analyze_diff(
     }
 
     // FORK-008 — security file gutted (>20 lines removed, <30% added back)
-    if is_security_file(rel_path)
-        && n_removed > 20
-        && (n_added as f64) < (n_removed as f64) * 0.3
-    {
+    if is_security_file(rel_path) && n_removed > 20 && (n_added as f64) < (n_removed as f64) * 0.3 {
         report.add_finding(
             Finding::new(
                 "FORK-008",

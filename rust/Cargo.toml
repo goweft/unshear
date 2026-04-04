@@ -2,7 +2,6 @@
 name = "unshear"
 version = "0.1.0"
 edition = "2021"
-rust-edition = "2021"
 authors = ["goweft <goweft@proton.me>"]
 description = "AI agent fork divergence detector — detects removed safety mechanisms, stripped guardrails, and weakened security controls"
 license = "MIT"
